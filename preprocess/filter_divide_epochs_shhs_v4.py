@@ -51,43 +51,6 @@ all_files = np.array([int(i) for i in all_files])
 # Generate list of files
 cvd_summary = pd.read_csv(os.path.join(base_path, 'datasets', 'shhs-cvd-summary-dataset-0.21.0.csv'))
 #%%
-# healthy_at_baseline = cvd_summary[
-#     (cvd_summary['prev_mi'] == 0) &  # Number of myocardial infarctions (MIs) Prior to Baseline
-#     (cvd_summary['prev_revpro'] == 0) &  # Number of Revascularization Procedures Prior to Baseline
-#     (cvd_summary['prev_stk'] == 0) &  # Number of Strokes Prior to Baseline
-#     (cvd_summary['prev_chf'] == 0) &  # Number of Congestive Heart Failure (CHF) episodes Prior to Baseline
-#     (cvd_summary['prev_ang'] == 0) &  # Number of Angina Episodes Prior to Baseline
-#     (cvd_summary['prev_mip'] == 0)  # Number of Procedures Related to Heart Attack Prior to Baseline
-#     ]['nsrrid'].values
-#
-# no_stroke_after_baseline = cvd_summary[
-#     (cvd_summary['nsrrid'].isin(healthy_at_baseline)) &
-#     (cvd_summary['stroke'] == 0)]
-#
-# stroke_after_baseline = cvd_summary[
-#     (cvd_summary['nsrrid'].isin(healthy_at_baseline)) &
-#     (cvd_summary['stroke'] != 0) &
-#     (cvd_summary['stk_date'] != 0)]
-#
-# stroke_after_baseline_after_1y_3y = stroke_after_baseline[
-#     (stroke_after_baseline['stk_date'] > 365) &
-#     (stroke_after_baseline['stk_date'] < 365 * 3)]
-#
-# completely_healthy_after_baseline = cvd_summary[
-#     (cvd_summary['nsrrid'].isin(healthy_at_baseline)) &
-#     (cvd_summary['stroke'] == 0) &  # no stroke
-#     (cvd_summary['mi'] == 0) &  # no myocardial infarctions (MIs)
-#     (cvd_summary['revasc_proc'] == 0) &  # no Revascularization Procedures
-#     (cvd_summary['chf'] == 0) &  # no Congestive Heart Failure (CHF) episodes
-#     (cvd_summary['cvd_death'] == 0) &  # Fatal Coronary vascula Disease (CHD)
-#     (cvd_summary[
-#          'afibincident'] == 0) &  # Incident Atrial Fibrillation (AF) after SHHS Visit 1    ----- Very strict. from 500 to 233
-#     (cvd_summary['angina'] == 0)]  # no Angina Episodes ? maybe too strict
-#
-# stroke_subject_list = stroke_after_baseline['nsrrid'].values
-# no_stroke_subject_list = no_stroke_after_baseline['nsrrid'].values
-
-
 # can you find all the files in the folder?
 file_list = os.listdir(shh1_data_path)
 annotation_list = os.listdir(shh1_events_path)
@@ -103,7 +66,7 @@ for sub in all_files:
 
 
 # %%
-# !!!!! REMEMBER TO CHANGE THE PATH
+# Remember to change path
 newpath = Path('/work3/saima/shhs_processed/shhs1_processed_all_directories_V4') # path to save the data
 #%%
 
